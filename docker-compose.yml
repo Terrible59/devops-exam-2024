@@ -39,7 +39,7 @@ services:
       - frontend
 
   frontend:
-    image: kubalovpasha/incident-front
+    build: ../devops-exam-2024-front
     volumes:
       - build_output:/app/dist
     environment:

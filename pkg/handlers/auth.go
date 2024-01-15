@@ -11,12 +11,12 @@ import (
 )
 
 type LoginParams struct {
-	Email    string `json:"email" validate:"required,email,min=6,max=32"`
+	Email    string `json:"email" validate:"required,min=6,max=32"`
 	Password string `json:"password" validate:"required"`
 }
 
 type RegisterParams struct {
-	Email    string `json:"email" validate:"required,email,min=6,max=32"`
+	Email    string `json:"email" validate:"required,min=6,max=32"`
 	Password string `json:"password" validate:"required"`
 }
 
