@@ -55,7 +55,7 @@ func SetupRoutes(config *SetupConfig) {
 		Maker:  config.Maker,
 	}
 
-	_ = authentication.New(authConfig)
+	authMiddleware := authentication.New(authConfig)
 
 	handlers := NewHandlers(config.Repo, config.Maker, config.Validator)
 
@@ -65,4 +65,10 @@ func SetupRoutes(config *SetupConfig) {
 	auth.Post("login", handlers.login)
 	auth.Post("register", handlers.register)
 	auth.Post("refresh", handlers.refresh)
+
+	rides := api.Group("/rides", authMiddleware)
+	rides.Get("/", handlers.getRides)
+
+	cars := api.Group("/cars")
+	cars.Get("/free", handlers.getFreeCars)
 }

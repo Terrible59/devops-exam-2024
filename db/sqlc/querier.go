@@ -15,9 +15,11 @@ type Querier interface {
 	CreateUser(ctx context.Context, arg CreateUserParams) (User, error)
 	DeleteToken(ctx context.Context, id uuid.UUID) error
 	DeleteUsersTokens(ctx context.Context, userID uuid.UUID) error
+	GetFreeCars(ctx context.Context) ([]Car, error)
 	GetToken(ctx context.Context, token string) (Token, error)
 	GetUserByEmail(ctx context.Context, email string) (User, error)
 	GetUserById(ctx context.Context, id uuid.UUID) (User, error)
+	GetUserRides(ctx context.Context, userID uuid.UUID) ([]GetUserRidesRow, error)
 }
 
 var _ Querier = (*Queries)(nil)

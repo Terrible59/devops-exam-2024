@@ -9,6 +9,21 @@ import (
 	"github.com/guregu/null"
 )
 
+type Car struct {
+	ID                 uuid.UUID   `json:"id"`
+	Model              null.String `json:"model"`
+	RegistrationNumber null.String `json:"registration_number"`
+	FuelLevel          null.Int    `json:"fuel_level"`
+	IsReserve          bool        `json:"is_reserve"`
+}
+
+type Ride struct {
+	ID        uuid.UUID `json:"id"`
+	UserID    uuid.UUID `json:"user_id"`
+	CarID     uuid.UUID `json:"car_id"`
+	CreatedAt null.Time `json:"created_at"`
+}
+
 type Token struct {
 	ID        uuid.UUID `json:"id"`
 	Token     string    `json:"token"`

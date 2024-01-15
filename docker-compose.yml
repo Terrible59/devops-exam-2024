@@ -17,8 +17,8 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
-      - ~/incident_volume:/docker-entrypoint-initdb.d
-      - ~/incident_volume:/var/lib/postgresql/data
+      - ~/examen_volume:/docker-entrypoint-initdb.d
+      - ~/examen_volume:/var/lib/postgresql/data
     ports:
       - "5444:5444"
     networks:

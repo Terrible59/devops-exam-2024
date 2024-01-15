@@ -37,16 +37,17 @@ begin
 
 end $$ language plpgsql;
 
--- CREATE TABLE incidents (
---     id uuid DEFAULT fn_uuid_time_ordered() PRIMARY KEY,
---     registration_date TIMESTAMP NOT NULL,
---     summary TEXT,
---     incident_type TEXT
--- );
+CREATE TABLE cars (
+    id uuid DEFAULT fn_uuid_time_ordered() PRIMARY KEY,
+    model TEXT,
+    registration_number TEXT,
+    fuel_level INTEGER CHECK ( fuel_level BETWEEN 0 AND 100),
+    is_reserve BOOLEAN DEFAULT FALSE NOT NULL
+);
 
--- INSERT INTO incidents (registration_date, summary, incident_type) VALUES
---     ('2023-01-01 10:00:00', 'Несчастный случай на производстве', 'Несчастный случай'),
---     ('2023-01-02 15:30:00', 'Кража в магазине', 'Кража'),
---     ('2023-01-03 20:00:00', 'Дорожно-транспортное происшествие', 'ДТП'),
---     ('2023-01-04 09:45:00', 'Нарушение общественного порядка', 'Нарушение порядка'),
---     ('2023-01-05 12:30:00', 'Подозрение на мошенничество', 'Мошенничество');
+INSERT INTO cars (id, model, registration_number, fuel_level, is_reserve) VALUES
+    ('700abb4a-9501-4f68-af60-36efd0b0c595', 'Kia Rio', 'о787оо50', 40, true),
+    ('2fc2c9e5-ffd4-4877-9fa6-2e25152d75ee', 'VW Polo', 'е887ео777', 20, false),
+    ('e476304b-68a8-46bf-80a8-ca9cf5c18c4b', 'VW Polo', 'м761он797', 50, true),
+    ('d5b957bc-7c46-44df-9eea-fa7d6aefd88b', 'Toyota RAV4', 'н761он797', 80, true)
+;
