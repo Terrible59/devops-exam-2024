@@ -9,7 +9,6 @@ migrate_up:
 
 test:
 	gotestsum --format pkgname -- -timeout=90s -coverprofile=cover.out ./...
-
 update:
 	docker-compose stop && docker-compose rm -f && docker-compose pull && docker-compose up -d
 
